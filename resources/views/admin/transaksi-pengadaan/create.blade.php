@@ -18,12 +18,23 @@
 @endsection
 
 @section('content')
+
 <div class="panel panel-default col-md-12">
     <div class="panel-heading"> Form Input Transaksi Pengadaan
         <a href="{{ route('transaksi-pengadaan.index') }}" class="btn btn-default" style="float: right;"><span class="fa fa-arrow-left">&nbsp;</span> Kembali</a>
     </div>
     <div class="panel-body">
         <div class="col-md-12">
+            @if ($errors->any())
+                <div class="alert alert-danger">
+                    @foreach ($errors->all() as $error)
+                        <ul>
+                            <li>{{ $error }}</li>
+                        </ul>
+                    @endforeach
+                </div>
+            @endif
+
             <form role="form" action="{{ route('transaksi-pengadaan.store') }}" method="post" enctype="multipart/form-data">
             @csrf
                 <div class="form-group">
